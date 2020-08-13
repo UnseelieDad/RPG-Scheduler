@@ -4,11 +4,12 @@ import { deepPurple, grey } from "@material-ui/core/colors"
 // configuration for the application's material ui theme
 const theme = createMuiTheme({
   palette: {
+    type: "dark",
     primary: {
-      main: deepPurple[500],
+      main: grey[900],
     },
     secondary: {
-      main: grey[900],
+      main: deepPurple[500],
     },
   },
 })
