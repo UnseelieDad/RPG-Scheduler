@@ -6,5 +6,14 @@
 
 module.exports = {
   /* Your site config here */
-  plugins: ["gatsby-plugin-material-ui"],
+  plugins: [
+    "gatsby-plugin-material-ui",
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: ["Roboto:300,400,500,700"],
+        display: "swap",
+      },
+    },
+  ],
 }
