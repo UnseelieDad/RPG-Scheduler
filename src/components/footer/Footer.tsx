@@ -1,5 +1,5 @@
 import React from "react"
-import { Divider, Container } from "@material-ui/core"
+import { Divider, Container, Typography, Link } from "@material-ui/core"
 import { GitHub, LinkedIn } from "@material-ui/icons"
 import footerStyles from "./footerStyles"
 
@@ -10,8 +10,26 @@ const Footer = () => {
     <footer>
       <Divider />
       <Container className={classes.root}>
-        <GitHub className={classes.icon} />
-        <LinkedIn className={classes.icon} />
+        <Typography className={classes.links}>
+          <Link
+            rel="noopener"
+            target="_blank"
+            href="https://www.linkedin.com/in/seth-martin-57250b136/"
+            className={classes.icon}
+            color="inherit"
+          >
+            <LinkedIn />
+          </Link>
+          <Link
+            className={classes.icon}
+            href="https://github.com/UnseelieDad"
+            target="_blank"
+            rel="noopener"
+            color="inherit"
+          >
+            <GitHub />
+          </Link>
+        </Typography>
       </Container>
     </footer>
   )

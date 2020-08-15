@@ -6,6 +6,9 @@ const footerStyles = makeStyles((theme: Theme) =>
       display: "flex",
       justifyContent: "center",
     },
+    links: {
+      marginTop: theme.spacing(2),
+    },
     icon: {
       margin: theme.spacing(2),
     },

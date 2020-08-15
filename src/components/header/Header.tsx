@@ -34,10 +34,20 @@ const Header = () => {
           >
             Home
           </StyleLink>
-          <StyleLink component={Link} to="#" className={classes.links}>
+          <StyleLink
+            component={Link}
+            to="#"
+            className={classes.links}
+            activeClassName={classes.activeLink}
+          >
             About
           </StyleLink>
-          <StyleLink component={Link} to="#" className={classes.links}>
+          <StyleLink
+            component={Link}
+            to="#"
+            className={classes.links}
+            activeClassName={classes.activeLink}
+          >
             Contact
           </StyleLink>
         </Typography>
