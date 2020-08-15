@@ -18,7 +18,7 @@ const Header = () => {
     <header>
       <Toolbar>
         <Typography variant="h6" className={classes.title}>
-          RPG Scheduling App
+          Navi
         </Typography>
         <Typography
           color="primary"
@@ -29,6 +29,7 @@ const Header = () => {
           <StyleLink
             component={Link}
             to="/"
+            underline="none"
             activeClassName={classes.activeLink}
             className={classes.links}
           >
@@ -37,6 +38,7 @@ const Header = () => {
           <StyleLink
             component={Link}
             to="#"
+            underline="none"
             className={classes.links}
             activeClassName={classes.activeLink}
           >
@@ -45,13 +47,14 @@ const Header = () => {
           <StyleLink
             component={Link}
             to="#"
+            underline="none"
             className={classes.links}
             activeClassName={classes.activeLink}
           >
             Contact
           </StyleLink>
         </Typography>
-        <Button className={classes.logIn} variant="contained" color="primary">
+        <Button className={classes.logIn} variant="contained" color="secondary">
           Log In
         </Button>
       </Toolbar>

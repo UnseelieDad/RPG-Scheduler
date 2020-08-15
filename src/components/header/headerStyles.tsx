@@ -8,6 +8,9 @@ const headerStyles = makeStyles((theme: Theme) =>
     links: {
       marginLeft: theme.spacing(3),
       fontSize: "1.125rem",
+      "&:hover": {
+        color: theme.palette.primary.light,
+      },
     },
     link: {
       cursor: "pointer",
