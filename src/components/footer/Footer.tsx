@@ -26,7 +26,7 @@ const Footer = () => {
             className={classes.icon}
             color="inherit"
           >
-            <LinkedIn />
+            <LinkedIn fontSize="large" />
           </Link>
           <Link
             className={classes.icon}
@@ -35,7 +35,7 @@ const Footer = () => {
             rel="noopener"
             color="inherit"
           >
-            <GitHub />
+            <GitHub fontSize="large" />
           </Link>
           <Link
             className={classes.icon}
@@ -44,7 +44,7 @@ const Footer = () => {
             rel="noopener"
             color="inherit"
           >
-            <Email />
+            <Email fontSize="large" />
           </Link>
         </Typography>
       </Container>

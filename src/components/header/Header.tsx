@@ -54,8 +54,13 @@ const Header = () => {
             Contact
           </StyleLink>
         </Typography>
-        <Button className={classes.logIn} variant="contained" color="secondary">
-          Log In
+        <Button
+          className={classes.logIn}
+          color="secondary"
+          size="small"
+          variant="contained"
+        >
+          LOGIN
         </Button>
       </Toolbar>
       <Divider />

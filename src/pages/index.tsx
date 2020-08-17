@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     actionButton: {
       marginTop: theme.spacing(4),
+      marginBottom: theme.spacing(2),
       alignSelf: "center",
     },
   })
@@ -32,7 +33,7 @@ const Home = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Layout>
-        <Typography variant="h3" align="center" className={classes.centerText}>
+        <Typography variant="h4" align="center" className={classes.centerText}>
           Never miss a game again.
         </Typography>
         <Typography
