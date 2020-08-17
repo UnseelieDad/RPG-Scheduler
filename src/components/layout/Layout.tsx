@@ -2,7 +2,7 @@ import React from "react"
 
 import Header from "../header/Header"
 import Footer from "../footer/Footer"
-import layoutStyles from "./laoutStyles"
+import layoutStyles from "./layoutStyles"
 import { Container } from "@material-ui/core"
 
 const Layout = ({ children }) => {

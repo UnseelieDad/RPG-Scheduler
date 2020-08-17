@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <header>
       <Toolbar>
-        <Typography variant="h6" className={classes.title}>
+        <Typography variant="h5" className={classes.title}>
           Navi
         </Typography>
         <Typography

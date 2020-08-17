@@ -1,6 +1,6 @@
 import React from "react"
 import { Divider, Container, Typography, Link } from "@material-ui/core"
-import { GitHub, LinkedIn } from "@material-ui/icons"
+import { GitHub, LinkedIn, Email } from "@material-ui/icons"
 import footerStyles from "./footerStyles"
 
 const Footer = () => {
@@ -9,6 +9,14 @@ const Footer = () => {
   return (
     <footer>
       <Divider />
+      <Typography
+        variant="h6"
+        color="primary"
+        align="center"
+        className={classes.contact}
+      >
+        Contact Me:
+      </Typography>
       <Container className={classes.root}>
         <Typography className={classes.links}>
           <Link
@@ -28,6 +36,15 @@ const Footer = () => {
             color="inherit"
           >
             <GitHub />
+          </Link>
+          <Link
+            className={classes.icon}
+            href="mailto:voiceofsethmartin@gmail.com"
+            target="_blank"
+            rel="noopener"
+            color="inherit"
+          >
+            <Email />
           </Link>
         </Typography>
       </Container>

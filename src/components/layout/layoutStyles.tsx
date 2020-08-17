@@ -5,7 +5,8 @@ const layoutStyles = makeStyles(() =>
     root: {
       display: "flex",
       flexDirection: "column",
-      minHeight: "80vh",
+      minHeight: "65vh",
+      justifyContent: "center",
     },
   })
 )
