@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 
 // use effect hook to call login processing to get the code out and exchange it for a token
 // extract code from query string
@@ -11,7 +11,39 @@ import React from "react"
 // Use location prop for query string
 
 const App = props => {
-  console.log("props", props)
+  useEffect(() => {
+    console.log(props.location)
+    const code = props.location.search.split("=")[1]
+    console.log(code)
+    const data = {
+      client_id: process.env.GATSBY_DISCORD_CLIENT_ID,
+      client_secret: process.env.GATSBY_DISCORD_CLIENT_SECRET,
+      grant_type: "authorization_code",
+      redirect_uri: "http://localhost:8000/app",
+      code: code,
+      scope: "identify",
+    }
+    console.log(data)
+    fetch("https://discord.com/api/oauth2/token", {
+      method: "POST",
+      body: new URLSearchParams(data),
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(responseData =>
+        fetch("https://discordapp.com/api/users/@me", {
+          headers: {
+            authorization: `${responseData.token_type} ${responseData.access_token}`,
+          },
+        })
+      )
+      .then(res => res.json())
+      .then(console.log)
+  })
 
   return <h1>You've logged in!</h1>
 }

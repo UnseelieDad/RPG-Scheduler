@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
-    "develop": "gatsby develop",
+    "develop": "set GATSBY_ENV=development && gatsby develop",
     "start": "run-p start:**",
     "start:app": "npm run develop",
     "start:lambda": "netlify-lambda serve src/functions",
@@ -27,6 +27,7 @@
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
+    "@types/node": "^14.6.0",
     "http-proxy-middleware": "^1.0.5",
     "netlify-lambda": "^2.0.1",
     "npm-run-all": "^4.1.5",
