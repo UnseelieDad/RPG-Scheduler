@@ -11,6 +11,7 @@ const App = props => {
   const [userName, setUserName] = useState("")
 
   // Hook for handling discord authentication
+  // TODO: Split this up using context api/netlify functions/redux
   useEffect(() => {
     // parse the query string and get the auth code from it
     const code = props.location.search.split("=")[1]
