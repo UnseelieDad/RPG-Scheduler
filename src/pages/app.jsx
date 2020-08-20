@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useState, useEffect } from "react"
 
 // look into using context api for this? Redux seems a bit complicated for the moment.
 // Probably need to to get the code from the match prop.
@@ -8,10 +8,13 @@ import React, { useEffect } from "react"
 // need to add  in loading and redirects while the process is going on, run it in the background as a netlify function?
 
 const App = props => {
+  const [userName, setUserName] = useState("")
+
+  // Hook for handling discord authentication
   useEffect(() => {
-    console.log(props.location)
+    // parse the query string and get the auth code from it
     const code = props.location.search.split("=")[1]
-    console.log(code)
+    // set up a data object for the auth request
     const data = {
       client_id: process.env.GATSBY_DISCORD_CLIENT_ID,
       client_secret: process.env.GATSBY_DISCORD_CLIENT_SECRET,
@@ -20,7 +23,7 @@ const App = props => {
       code: code,
       scope: "identify",
     }
-    console.log(data)
+    // get the auth token
     fetch("https://discord.com/api/oauth2/token", {
       method: "POST",
       body: new URLSearchParams(data),
@@ -31,6 +34,7 @@ const App = props => {
       .then(response => {
         return response.json()
       })
+      // use auth data to fetch user
       .then(responseData =>
         fetch("https://discordapp.com/api/users/@me", {
           headers: {
@@ -39,10 +43,14 @@ const App = props => {
         })
       )
       .then(res => res.json())
-      .then(console.log)
-  })
+      .then(resData => {
+        setUserName(resData.username)
+      })
+  }, [props.location.search])
 
-  return <h1>You've logged in!</h1>
+  return (
+    <h1>{userName !== "" ? `${userName} has logged in!` : "Logging in..."}</h1>
+  )
 }
 
 export default App
