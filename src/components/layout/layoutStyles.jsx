@@ -1,6 +1,6 @@
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles"
+import { makeStyles, createStyles } from "@material-ui/core/styles"
 
-const layoutStyles = makeStyles((theme: Theme) =>
+const layoutStyles = makeStyles(theme =>
   createStyles({
     root: {
       display: "flex",

@@ -6,14 +6,13 @@ import {
   Container,
   makeStyles,
   createStyles,
-  Theme,
   Button,
 } from "@material-ui/core"
 
 import theme from "../theme/theme"
 import Layout from "../components/layout/Layout"
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(theme =>
   createStyles({
     centerText: {
       marginTop: theme.spacing(3),

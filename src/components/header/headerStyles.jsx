@@ -1,6 +1,6 @@
-import { makeStyles, Theme, createStyles } from "@material-ui/core"
+import { makeStyles, createStyles } from "@material-ui/core"
 
-const headerStyles = makeStyles((theme: Theme) =>
+const headerStyles = makeStyles(theme =>
   createStyles({
     title: {
       flex: 1,
