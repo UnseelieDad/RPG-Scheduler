@@ -2,18 +2,41 @@
 const express = require("express")
 const serverless = require("serverless-http")
 const bodyParser = require("body-parser")
+const axios = require("axios")
 
 app = express()
 
 const router = express.Router()
 
 // log in with discord
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   // get the code and handle the rest of the login, return user stuff for now.
+
   const code = req.body.code
+
+  const data = {
+    client_id: process.env.GATSBY_DISCORD_CLIENT_ID,
+    client_secret: process.env.GATSBY_DISCORD_CLIENT_SECRET,
+    grant_type: "authorization_code",
+    redirect_uri: "http://localhost:8000/app",
+    code: code,
+    scope: "identify",
+  }
+
+  const tokenRes = await axios.post(
+    "https://discord.com/api/oauth2/token",
+    new URLSearchParams(data)
+  )
+  const userRes = await axios.get("https://discordapp.com/api/users/@me", {
+    headers: {
+      authorization: `${tokenRes.data.token_type} ${tokenRes.data.access_token}`,
+    },
+  })
+
   res.status(200).json({
     message: "Test output",
     code: code,
+    user: userRes.username,
   })
 })
 
@@ -29,14 +52,7 @@ app.use("/.netlify/functions/auth", router)
 module.exports.handler = serverless(app)
 
 // set up a data object for the auth request
-// const data = {
-//   client_id: process.env.GATSBY_DISCORD_CLIENT_ID,
-//   client_secret: process.env.GATSBY_DISCORD_CLIENT_SECRET,
-//   grant_type: "authorization_code",
-//   redirect_uri: "http://localhost:8000/app",
-//   code: code,
-//   scope: "identify",
-// }
+
 // // get the auth token
 // fetch("https://discord.com/api/oauth2/token", {
 //   method: "POST",

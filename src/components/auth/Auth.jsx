@@ -17,7 +17,7 @@ const Auth = ({ location }) => {
       .catch(err => {
         console.log(err)
       })
-  }, [location])
+  }, [location.search])
 
   return <p>{username !== "" ? `Hello ${username}!` : "Loading..."}</p>
 }
