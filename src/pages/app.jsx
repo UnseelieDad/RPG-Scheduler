@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react"
+import Layout from "../components/layout/Layout"
+import Auth from "../components/auth/Auth"
 
 // look into using context api for this? Redux seems a bit complicated for the moment.
 // Probably need to to get the code from the match prop.
@@ -21,49 +23,10 @@ import React, { useState, useEffect } from "react"
 */
 
 const App = props => {
-  const [userName, setUserName] = useState("")
-
-  // Hook for handling discord authentication
-  // TODO: Split this up using context api/netlify functions/redux
-  useEffect(() => {
-    // parse the query string and get the auth code from it
-    const code = props.location.search.split("=")[1]
-    // set up a data object for the auth request
-    const data = {
-      client_id: process.env.GATSBY_DISCORD_CLIENT_ID,
-      client_secret: process.env.GATSBY_DISCORD_CLIENT_SECRET,
-      grant_type: "authorization_code",
-      redirect_uri: "http://localhost:8000/app",
-      code: code,
-      scope: "identify",
-    }
-    // get the auth token
-    fetch("https://discord.com/api/oauth2/token", {
-      method: "POST",
-      body: new URLSearchParams(data),
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-    })
-      .then(response => {
-        return response.json()
-      })
-      // use auth data to fetch user
-      .then(responseData =>
-        fetch("https://discordapp.com/api/users/@me", {
-          headers: {
-            authorization: `${responseData.token_type} ${responseData.access_token}`,
-          },
-        })
-      )
-      .then(res => res.json())
-      .then(resData => {
-        setUserName(resData.username)
-      })
-  }, [props.location.search])
-
   return (
-    <h1>{userName !== "" ? `${userName} has logged in!` : "Logging in..."}</h1>
+    <Layout>
+      <Auth />
+    </Layout>
   )
 }
 
