@@ -7,6 +7,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "set GATSBY_ENV=development && gatsby develop",
+    "develop:lambda": "netlify-lambda serve functions",
     "format": "prettier --write '**/*.{js,jsx,json,md}'",
     "start": "netlify dev",
     "serve": "gatsby serve",

@@ -1,0 +1,4 @@
+[build]
+build = "npm run build"
+functions = "public/lambda"
+publish = "build"

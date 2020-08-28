@@ -12,6 +12,7 @@ const router = express.Router()
 router.post("/", async (req, res) => {
   // get the code and handle the rest of the login, return user stuff for now.
 
+  console.log("Do these work?")
   const code = req.body.code
 
   const data = {
@@ -27,11 +28,13 @@ router.post("/", async (req, res) => {
     "https://discord.com/api/oauth2/token",
     new URLSearchParams(data)
   )
+  console.log(tokeRes.data)
   const userRes = await axios.get("https://discordapp.com/api/users/@me", {
     headers: {
       authorization: `${tokenRes.data.token_type} ${tokenRes.data.access_token}`,
     },
   })
+  console.log(userRes.data)
 
   res.status(200).json({
     message: "Test output",
@@ -44,6 +47,14 @@ router.get("/", (req, res) => {
   res.status(200).json({
     message: "Hello World!",
   })
+})
+
+// Set headers to allow CORS requests
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*")
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE")
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization")
+  next()
 })
 
 app.use(bodyParser.json())

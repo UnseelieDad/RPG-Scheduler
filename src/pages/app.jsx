@@ -1,4 +1,8 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
+
+import { ThemeProvider, CssBaseline } from "@material-ui/core"
+
+import theme from "../theme/theme"
 import Layout from "../components/layout/Layout"
 import Auth from "../components/auth/Auth"
 
@@ -24,9 +28,12 @@ import Auth from "../components/auth/Auth"
 
 const App = props => {
   return (
-    <Layout>
-      <Auth />
-    </Layout>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Layout>
+        <Auth code={props.location.search.split[1]} />
+      </Layout>
+    </ThemeProvider>
   )
 }
 

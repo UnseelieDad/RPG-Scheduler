@@ -3,11 +3,12 @@ import {
   Toolbar,
   Typography,
   Link as StyleLink,
-  Button,
   Divider,
 } from "@material-ui/core"
 
 import { Link } from "gatsby"
+
+import AuthButton from "../auth/AuthButton/AuthButton"
 
 import headerStyles from "./headerStyles"
 
@@ -54,15 +55,7 @@ const Header = () => {
             Contact
           </StyleLink>
         </Typography>
-        <Button
-          className={classes.logIn}
-          color="secondary"
-          size="small"
-          variant="contained"
-          href="https://discord.com/api/oauth2/authorize?client_id=742210384785834196&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fapp&response_type=code&scope=identify"
-        >
-          LOGIN
-        </Button>
+        <AuthButton>LOGIN</AuthButton>
       </Toolbar>
       <Divider />
     </header>

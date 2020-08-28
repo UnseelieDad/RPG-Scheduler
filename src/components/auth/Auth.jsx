@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 
-const Auth = ({ location }) => {
+const Auth = ({ code }) => {
   const [username, setUserName] = useState("")
 
   useEffect(() => {
-    const code = props.location.search.split("=")[1]
-
     axios
-      .post({
+      .post("http://localhost:9000/.netlify/functions/auth", {
         code: code,
       })
       .then(res => {
-        setUserName(res.data)
+        console.log(res)
+        setUserName(res.data.user)
       })
       .catch(err => {
         console.log(err)
       })
-  }, [location.search])
+  }, [code])
 
   return <p>{username !== "" ? `Hello ${username}!` : "Loading..."}</p>
 }
