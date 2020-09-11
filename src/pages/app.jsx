@@ -31,7 +31,7 @@ const App = props => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Layout>
-        <Auth code={props.location.search.split[1]} />
+        <Auth code={props.location.search.split("=")[1]} />
       </Layout>
     </ThemeProvider>
   )

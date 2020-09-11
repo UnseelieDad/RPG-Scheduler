@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 // this should do discord auth stuff at some point.
 const express = require("express")
 const serverless = require("serverless-http")
@@ -13,34 +15,38 @@ router.post("/", async (req, res) => {
   // get the code and handle the rest of the login, return user stuff for now.
 
   console.log("Do these work?")
+  // not getting code or the environment variables
   const code = req.body.code
 
   const data = {
-    client_id: process.env.GATSBY_DISCORD_CLIENT_ID,
-    client_secret: process.env.GATSBY_DISCORD_CLIENT_SECRET,
+    client_id: process.env.DISCORD_CLIENT_ID,
+    client_secret: process.env.DISCORD_CLIENT_SECRET,
     grant_type: "authorization_code",
     redirect_uri: "http://localhost:8000/app",
     code: code,
     scope: "identify",
   }
+  console.log("DATA", data)
 
-  const tokenRes = await axios.post(
-    "https://discord.com/api/oauth2/token",
-    new URLSearchParams(data)
-  )
-  console.log(tokeRes.data)
-  const userRes = await axios.get("https://discordapp.com/api/users/@me", {
-    headers: {
-      authorization: `${tokenRes.data.token_type} ${tokenRes.data.access_token}`,
-    },
-  })
-  console.log(userRes.data)
+  try {
+    const tokenRes = await axios.post(
+      "https://discord.com/api/oauth2/token",
+      new URLSearchParams(data)
+    )
+    console.log(tokenRes.data)
+    const userRes = await axios.get("https://discordapp.com/api/users/@me", {
+      headers: {
+        authorization: `${tokenRes.data.token_type} ${tokenRes.data.access_token}`,
+      },
+    })
+    console.log(userRes.data)
 
-  res.status(200).json({
-    message: "Test output",
-    code: code,
-    user: userRes.username,
-  })
+    res.status(200).json({
+      user: userRes.data.username,
+    })
+  } catch (err) {
+    console.log(err)
+  }
 })
 
 router.get("/", (req, res) => {

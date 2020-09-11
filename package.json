@@ -31,6 +31,7 @@
     "serverless-http": "^2.5.0"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "netlify-lambda": "^2.0.1",
     "prettier": "2.0.5"
   },

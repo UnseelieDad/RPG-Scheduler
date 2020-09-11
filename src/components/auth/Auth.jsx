@@ -5,6 +5,7 @@ const Auth = ({ code }) => {
   const [username, setUserName] = useState("")
 
   useEffect(() => {
+    console.log(code)
     axios
       .post("http://localhost:9000/.netlify/functions/auth", {
         code: code,
