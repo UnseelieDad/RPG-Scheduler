@@ -12,10 +12,8 @@ const router = express.Router()
 
 // log in with discord
 router.post("/", async (req, res) => {
+  // TODO: Add an error response on a catch
   // get the code and handle the rest of the login, return user stuff for now.
-
-  console.log("Do these work?")
-  // not getting code or the environment variables
   const code = req.body.code
 
   const data = {
@@ -26,20 +24,17 @@ router.post("/", async (req, res) => {
     code: code,
     scope: "identify",
   }
-  console.log("DATA", data)
 
   try {
     const tokenRes = await axios.post(
       "https://discord.com/api/oauth2/token",
       new URLSearchParams(data)
     )
-    console.log(tokenRes.data)
     const userRes = await axios.get("https://discordapp.com/api/users/@me", {
       headers: {
         authorization: `${tokenRes.data.token_type} ${tokenRes.data.access_token}`,
       },
     })
-    console.log(userRes.data)
 
     res.status(200).json({
       user: userRes.data.username,
@@ -47,12 +42,6 @@ router.post("/", async (req, res) => {
   } catch (err) {
     console.log(err)
   }
-})
-
-router.get("/", (req, res) => {
-  res.status(200).json({
-    message: "Hello World!",
-  })
 })
 
 // Set headers to allow CORS requests
