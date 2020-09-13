@@ -1,5 +1,5 @@
 import { createMuiTheme } from "@material-ui/core"
-import { deepPurple, lime } from "@material-ui/core/colors"
+import { deepPurple } from "@material-ui/core/colors"
 
 // configuration for the application's material ui theme
 const theme = createMuiTheme({

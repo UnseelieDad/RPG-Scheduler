@@ -6,6 +6,7 @@
 
 module.exports = {
   /* Your site config here */
+
   plugins: [
     "gatsby-plugin-material-ui",
     {
@@ -14,6 +15,10 @@ module.exports = {
         fonts: ["Roboto Mono:300,400,500,700"],
         display: "swap",
       },
+    },
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/app/*`] },
     },
   ],
 }

@@ -3,17 +3,15 @@ import {
   ThemeProvider,
   Typography,
   CssBaseline,
-  Container,
   makeStyles,
   createStyles,
-  Theme,
-  Button,
 } from "@material-ui/core"
 
 import theme from "../theme/theme"
 import Layout from "../components/layout/Layout"
+import AuthButton from "../components/auth/AuthButton/AuthButton"
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(theme =>
   createStyles({
     centerText: {
       marginTop: theme.spacing(3),
@@ -44,13 +42,7 @@ const Home = () => {
           Navi allows groups to keep track of when games are and who's showing
           up.
         </Typography>
-        <Button
-          variant="contained"
-          color="secondary"
-          className={classes.actionButton}
-        >
-          Track your games
-        </Button>
+        <AuthButton>Track your games!</AuthButton>
       </Layout>
     </ThemeProvider>
   )
