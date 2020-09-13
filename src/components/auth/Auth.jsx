@@ -12,7 +12,7 @@ const Auth = ({ code }) => {
       })
       .then(res => {
         console.log(res)
-        setUserName(res.data.user)
+        setUserName(res.data.user.username)
       })
       .catch(err => {
         console.log(err)

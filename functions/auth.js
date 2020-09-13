@@ -1,6 +1,5 @@
 require("dotenv").config()
 
-// this should do discord auth stuff at some point.
 const express = require("express")
 const serverless = require("serverless-http")
 const bodyParser = require("body-parser")
@@ -37,7 +36,11 @@ router.post("/", async (req, res) => {
     })
 
     res.status(200).json({
-      user: userRes.data.username,
+      user: userRes.data,
+      token_type: tokenRes.data.token_type,
+      access_token: tokenRes.data.acess_type,
+      expires_in: tokenRes.data.expires_in,
+      refresh_token: tokenRes.data.refresh_token,
     })
   } catch (err) {
     console.log(err)
@@ -56,29 +59,3 @@ app.use(bodyParser.json())
 app.use("/.netlify/functions/auth", router)
 
 module.exports.handler = serverless(app)
-
-// set up a data object for the auth request
-
-// // get the auth token
-// fetch("https://discord.com/api/oauth2/token", {
-//   method: "POST",
-//   body: new URLSearchParams(data),
-//   headers: {
-//     "Content-Type": "application/x-www-form-urlencoded",
-//   },
-// })
-//   .then(response => {
-//     return response.json()
-//   })
-//   // use auth data to fetch user
-//   .then(responseData =>
-//     fetch("https://discordapp.com/api/users/@me", {
-//       headers: {
-//         authorization: `${responseData.token_type} ${responseData.access_token}`,
-//       },
-//     })
-//   )
-//   .then(res => res.json())
-//   .then(resData => {
-//     setUserName(resData.username)
-//   })
