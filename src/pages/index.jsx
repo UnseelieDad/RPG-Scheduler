@@ -42,7 +42,9 @@ const Home = () => {
           Navi allows groups to keep track of when games are and who's showing
           up.
         </Typography>
-        <AuthButton>Track your games!</AuthButton>
+        <AuthButton className={classes.actionButton}>
+          Track your games!
+        </AuthButton>
       </Layout>
     </ThemeProvider>
   )
