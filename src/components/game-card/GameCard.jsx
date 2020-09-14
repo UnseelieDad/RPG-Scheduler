@@ -7,9 +7,11 @@ import {
   CardActions,
   Avatar,
   Container,
-  Button,
 } from "@material-ui/core"
+import { ToggleButton, ToggleButtonGroup } from "@material-ui/lab"
 import { makeStyles } from "@material-ui/core/styles"
+import CheckIcon from "@material-ui/icons/Check"
+import ClearIcon from "@material-ui/icons/Clear"
 
 import theme from "../../theme/theme"
 
@@ -63,12 +65,14 @@ const GameCard = () => {
         </Typography>
       </CardContent>
       <CardActions className={classes.buttons}>
-        <Button variant="outlined" color="secondary">
-          Yes
-        </Button>
-        <Button variant="outlined" color="secondary">
-          No
-        </Button>
+        <ToggleButtonGroup exclusive value="Yes" aria-label="text alignment">
+          <ToggleButton value="Yes" aria-label="left aligned">
+            <CheckIcon />
+          </ToggleButton>
+          <ToggleButton value="center" aria-label="centered">
+            <ClearIcon />
+          </ToggleButton>
+        </ToggleButtonGroup>
       </CardActions>
     </Card>
   )
