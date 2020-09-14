@@ -4,56 +4,71 @@ import {
   Card,
   CardContent,
   Typography,
-  Button,
   CardActions,
+  Avatar,
+  Container,
+  Button,
 } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 
+import theme from "../../theme/theme"
+
 const useStyles = makeStyles({
   root: {
-    width: 275,
+    width: 300,
+    margin: "auto",
   },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
+  icons: {
+    display: "flex",
+    justifyContent: "space-evenly",
+    flexWrap: "wrap",
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
   },
-  title: {
-    fontSize: 14,
+  icon: {
+    border: "2px solid red",
+    borderRadius: "50%",
+    margin: theme.spacing(0.5),
   },
-  pos: {
-    marginBottom: 12,
+  buttons: {
+    display: "flex",
+    justifyContent: "center",
   },
 })
 
 const GameCard = () => {
   const classes = useStyles()
-  const bull = <span className={classes.bullet}>•</span>
 
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          Word of the Day
+        <Typography variant="h5" align="center">
+          Game Title
         </Typography>
-        <Typography variant="h5" component="h2">
-          be{bull}nev{bull}o{bull}lent
+        <Typography variant="subtitle1" align="center">
+          Date
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
-        </Typography>
-        <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
+        <Container className={classes.icons}>
+          <Avatar className={classes.icon}>T</Avatar>
+          <Avatar className={classes.icon}>H</Avatar>
+          <Avatar className={classes.icon}>Q</Avatar>
+          <Avatar className={classes.icon}>Q</Avatar>
+          <Avatar className={classes.icon}>Q</Avatar>
+          <Avatar className={classes.icon}>Q</Avatar>
+          <Avatar className={classes.icon}>Q</Avatar>
+          <Avatar className={classes.icon}>Q</Avatar>
+        </Container>
+        <Typography variant="body1" align="center" color="primary">
+          Are you coming?
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
+      <CardActions className={classes.buttons}>
+        <Button variant="outlined" color="secondary">
+          Yes
+        </Button>
+        <Button variant="outlined" color="secondary">
+          No
+        </Button>
       </CardActions>
     </Card>
   )
