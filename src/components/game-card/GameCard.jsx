@@ -66,6 +66,7 @@ const GameCard = () => {
       </CardContent>
       <CardActions className={classes.buttons}>
         <ToggleButtonGroup exclusive value="Yes" aria-label="text alignment">
+          {/* TODO: Find a way to change the color of the toggle buttons*/}
           <ToggleButton value="Yes" aria-label="left aligned">
             <CheckIcon />
           </ToggleButton>
