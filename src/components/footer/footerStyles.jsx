@@ -5,15 +5,12 @@ const footerStyles = makeStyles(theme =>
     root: {
       display: "flex",
       justifyContent: "center",
+      flexDirection: "column",
+      padding: theme.spacing(3, 2),
+      marginTop: "auto",
     },
     links: {
-      marginTop: theme.spacing(2),
-      marginBottom: theme.spacing(2),
-      [theme.breakpoints.down("md")]: {
-        marginTop: theme.spacing(0.5),
-        marginBottom: theme.spacing(0.5),
-        fontSize: "2rem",
-      },
+      margin: "auto",
     },
     icon: {
       margin: theme.spacing(2),

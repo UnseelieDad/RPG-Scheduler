@@ -9,15 +9,16 @@ const Footer = () => {
   return (
     <footer>
       <Divider />
-      <Typography
-        variant="h6"
-        color="primary"
-        align="center"
-        className={classes.contact}
-      >
-        Contact Me:
-      </Typography>
+
       <Container className={classes.root}>
+        <Typography
+          variant="h6"
+          color="primary"
+          align="center"
+          className={classes.contact}
+        >
+          Contact Me:
+        </Typography>
         <Typography className={classes.links}>
           <Link
             rel="noopener"

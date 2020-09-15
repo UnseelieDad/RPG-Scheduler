@@ -5,14 +5,11 @@ const layoutStyles = makeStyles(theme =>
     root: {
       display: "flex",
       flexDirection: "column",
-      minHeight: "65vh",
-      justifyContent: "center",
-      [theme.breakpoints.down("md")]: {
-        minHeight: "85vh",
-      },
-      [theme.breakpoints.down("sm")]: {
-        minHeight: "70vh",
-      },
+      minHeight: "100vh",
+    },
+    main: {
+      marginTop: theme.spacing(8),
+      marginBottom: theme.spacing(2),
     },
   })
 )

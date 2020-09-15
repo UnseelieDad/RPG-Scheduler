@@ -5,7 +5,7 @@ import { ThemeProvider, CssBaseline } from "@material-ui/core"
 import theme from "../theme/theme"
 import Layout from "../components/layout/Layout"
 import Auth from "../components/auth/Auth"
-import GameCard from "../components/game-card/GameCard"
+import GameList from "../components/game-list/GameList"
 
 /*
   Ok so, here's what we do. Have an app page, with the usual layout but if user isn't auth give them a login with discord button
@@ -34,7 +34,7 @@ const App = props => {
       <CssBaseline />
       <Layout>
         {/* <Auth code={props.location.search.split("=")[1]} /> */}
-        <GameCard />
+        <GameList />
       </Layout>
     </ThemeProvider>
   )
