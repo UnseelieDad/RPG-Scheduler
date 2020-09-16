@@ -55,7 +55,7 @@ const Header = () => {
             Contact
           </StyleLink>
         </Typography>
-        <AuthButton>LOGIN</AuthButton>
+        <AuthButton classes={classes.logIn}>LOGIN</AuthButton>
       </Toolbar>
       <Divider />
     </header>

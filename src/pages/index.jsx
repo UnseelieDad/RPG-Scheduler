@@ -5,6 +5,7 @@ import {
   CssBaseline,
   makeStyles,
   createStyles,
+  Container,
 } from "@material-ui/core"
 
 import theme from "../theme/theme"
@@ -13,13 +14,16 @@ import AuthButton from "../components/auth/AuthButton/AuthButton"
 
 const useStyles = makeStyles(theme =>
   createStyles({
-    centerText: {
-      marginTop: theme.spacing(3),
+    root: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    },
+    text: {
+      marginBottom: theme.spacing(2),
     },
     actionButton: {
-      marginTop: theme.spacing(4),
-      marginBottom: theme.spacing(2),
-      alignSelf: "center",
+      marginTop: theme.spacing(1),
     },
   })
 )
@@ -31,20 +35,22 @@ const Home = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Layout>
-        <Typography variant="h4" align="center" className={classes.centerText}>
-          Never miss a game again.
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          className={classes.centerText}
-        >
-          Navi allows groups to keep track of when games are and who's showing
-          up.
-        </Typography>
-        <AuthButton className={classes.actionButton}>
-          Track your games!
-        </AuthButton>
+        <Container className={classes.root}>
+          <Typography align="center" variant="h4" className={classes.text}>
+            Never miss a game again.
+          </Typography>
+          <Typography
+            align="center"
+            variant="subtitle1"
+            className={classes.text}
+          >
+            Navi allows groups to keep track of when games are and who's showing
+            up.
+          </Typography>
+          <AuthButton classes={classes.actionButton}>
+            Track your games!
+          </AuthButton>
+        </Container>
       </Layout>
     </ThemeProvider>
   )

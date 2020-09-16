@@ -4,26 +4,25 @@ const footerStyles = makeStyles(theme =>
   createStyles({
     root: {
       display: "flex",
-      justifyContent: "center",
+      alignItems: "center",
       flexDirection: "column",
-      padding: theme.spacing(3, 2),
       marginTop: "auto",
     },
     links: {
-      margin: "auto",
+      margin: theme.spacing(0.5, 0),
     },
     icon: {
-      margin: theme.spacing(2),
+      margin: theme.spacing(0.5, 2),
       [theme.breakpoints.down("md")]: {
         fontSize: "3rem",
-        margin: theme.spacing(1),
+        margin: theme.spacing(0.5, 1),
       },
     },
     contact: {
-      margin: theme.spacing(2),
+      margin: theme.spacing(1, 0),
       [theme.breakpoints.down("md")]: {
         fontSize: "1.5rem",
-        margin: theme.spacing(1),
+        marginTop: theme.spacing(0.5, 0),
       },
     },
   })
