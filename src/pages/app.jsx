@@ -6,6 +6,7 @@ import theme from "../theme/theme"
 import Layout from "../components/layout/Layout"
 import Auth from "../components/auth/Auth"
 import GameList from "../components/game-list/GameList"
+import AppHeader from "../components/app-header/AppHeader"
 
 /*
   Ok so, here's what we do. Have an app page, with the usual layout but if user isn't auth give them a login with discord button
@@ -32,7 +33,7 @@ const App = props => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Layout>
+      <Layout header={<AppHeader />}>
         {/* <Auth code={props.location.search.split("=")[1]} /> */}
         <GameList />
       </Layout>

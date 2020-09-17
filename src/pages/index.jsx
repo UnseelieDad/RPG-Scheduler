@@ -11,6 +11,7 @@ import {
 import theme from "../theme/theme"
 import Layout from "../components/layout/Layout"
 import AuthButton from "../components/auth/AuthButton/AuthButton"
+import Header from "../components/header/Header"
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -34,7 +35,7 @@ const Home = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Layout>
+      <Layout header={<Header />} footer>
         <Container className={classes.root}>
           <Typography align="center" variant="h4" className={classes.text}>
             Never miss a game again.

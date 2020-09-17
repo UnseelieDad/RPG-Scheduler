@@ -14,9 +14,6 @@ const layoutStyles = makeStyles(theme =>
       flexDirection: "column",
       justifyContent: "center",
     },
-    main: {
-      margin: theme.spacing(3, 0),
-    },
   })
 )
 
