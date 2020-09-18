@@ -1,5 +1,5 @@
 import { makeStyles, createStyles } from "@material-ui/core/styles"
-import theme from "../../theme/theme"
+import theme from "../../../theme/theme"
 
 const gameListStyles = makeStyles(theme =>
   createStyles({
