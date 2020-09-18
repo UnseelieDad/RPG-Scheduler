@@ -61,11 +61,10 @@ const Header = ({ page }) => {
     )
   } else if (page === "app") {
     siteHeading = "Hello User!"
-    nav = (
-      <Button color="primary" size="large" className={classes.button}>
-        CREATE GAME
-      </Button>
-    )
+    nav = null
+    // <Button color="primary" size="large" className={classes.button}>
+    //   CREATE GAME
+    // </Button>
   }
 
   return (

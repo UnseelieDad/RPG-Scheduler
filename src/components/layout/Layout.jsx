@@ -2,7 +2,6 @@ import React from "react"
 
 import Header from "../header/Header"
 import Footer from "../footer/Footer"
-import AppHeader from "../app-header/AppHeader"
 import layoutStyles from "./layoutStyles"
 
 const Layout = ({ children, header, footer, page }) => {

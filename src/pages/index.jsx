@@ -4,30 +4,26 @@ import {
   Typography,
   CssBaseline,
   makeStyles,
-  createStyles,
   Container,
 } from "@material-ui/core"
 
 import theme from "../theme/theme"
 import Layout from "../components/layout/Layout"
 import AuthButton from "../components/auth/AuthButton/AuthButton"
-import Header from "../components/header/Header"
 
-const useStyles = makeStyles(theme =>
-  createStyles({
-    root: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-    },
-    text: {
-      marginBottom: theme.spacing(2),
-    },
-    actionButton: {
-      marginTop: theme.spacing(1),
-    },
-  })
-)
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  text: {
+    marginBottom: theme.spacing(2),
+  },
+  actionButton: {
+    marginTop: theme.spacing(1),
+  },
+}))
 
 const Home = () => {
   const classes = useStyles()
