@@ -16,11 +16,17 @@ import React from "react"
 
 import { Button } from "@material-ui/core"
 
-const AuthButton = ({ children, classes }) => {
+const AuthButton = ({ children, classes, contained }) => {
+  let buttonVariant = "text"
+  if (contained === true) {
+    buttonVariant = "contained"
+  }
+
   return (
     <Button
-      variant="contained"
+      variant={buttonVariant}
       color="secondary"
+      size="large"
       href={process.env.GATSBY_DISCORD_LOGIN_LINK}
       className={classes}
     >

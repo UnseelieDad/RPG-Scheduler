@@ -35,7 +35,7 @@ const Home = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Layout header={<Header />} footer>
+      <Layout header footer page="landing">
         <Container className={classes.root}>
           <Typography align="center" variant="h4" className={classes.text}>
             Never miss a game again.
@@ -48,7 +48,7 @@ const Home = () => {
             Navi allows groups to keep track of when games are and who's showing
             up.
           </Typography>
-          <AuthButton classes={classes.actionButton}>
+          <AuthButton classes={classes.actionButton} contained>
             Track your games!
           </AuthButton>
         </Container>

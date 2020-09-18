@@ -5,7 +5,11 @@ const headerStyles = makeStyles(theme =>
     title: {
       flex: 1,
     },
-    links: {
+    nav: {
+      display: "flex",
+      alignItems: "center",
+    },
+    link: {
       marginLeft: theme.spacing(3),
       fontSize: "1.125rem",
       "&:hover": {
@@ -15,14 +19,11 @@ const headerStyles = makeStyles(theme =>
         marginLeft: theme.spacing(1),
       },
     },
-    link: {
-      cursor: "pointer",
-    },
 
     activeLink: {
       color: theme.palette.primary.light,
     },
-    logIn: {
+    button: {
       marginLeft: theme.spacing(3),
       [theme.breakpoints.only("xs")]: {
         marginLeft: theme.spacing(1),

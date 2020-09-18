@@ -33,7 +33,7 @@ const App = props => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Layout header={<AppHeader />}>
+      <Layout header page="app">
         {/* <Auth code={props.location.search.split("=")[1]} /> */}
         <GameList />
       </Layout>
