@@ -9,7 +9,7 @@ const Layout = ({ children, header, footer, page }) => {
 
   return (
     <div className={classes.root}>
-      {header == true ? <Header page={page} /> : null}
+      {header === true ? <Header page={page} /> : null}
       <main className={classes.content}>{children}</main>
       {footer === true ? <Footer /> : null}
     </div>

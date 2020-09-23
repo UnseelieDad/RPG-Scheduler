@@ -23,6 +23,13 @@ const createGameStyles = makeStyles(theme => ({
   },
   card: {
     padding: theme.spacing(2),
+    marginBottom: theme.spacing(3),
+  },
+  cancel: {
+    color: theme.palette.error.main,
+  },
+  check: {
+    marginBottom: theme.spacing(2),
   },
 }))
 
