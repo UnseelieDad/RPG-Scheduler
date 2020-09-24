@@ -4,8 +4,10 @@ import {
   Typography,
   Link as StyleLink,
   Divider,
-  Button,
+  IconButton,
 } from "@material-ui/core"
+
+import MenuIcon from "@material-ui/icons/Menu"
 
 import { Link } from "gatsby"
 
@@ -69,7 +71,10 @@ const Header = ({ page }) => {
 
   return (
     <header>
-      <Toolbar>
+      <Toolbar className={classes.toolBar}>
+        <IconButton className={classes.menu}>
+          <MenuIcon />
+        </IconButton>
         <Typography variant="h5" className={classes.title}>
           {siteHeading}
         </Typography>

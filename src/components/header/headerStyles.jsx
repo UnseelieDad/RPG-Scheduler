@@ -4,6 +4,9 @@ const headerStyles = makeStyles(theme =>
   createStyles({
     title: {
       flex: 1,
+      [theme.breakpoints.only("xs")]: {
+        marginLeft: theme.spacing(1),
+      },
     },
     nav: {
       display: "flex",
@@ -16,7 +19,7 @@ const headerStyles = makeStyles(theme =>
         color: theme.palette.primary.light,
       },
       [theme.breakpoints.only("xs")]: {
-        marginLeft: theme.spacing(1),
+        display: "none",
       },
     },
 
@@ -25,8 +28,16 @@ const headerStyles = makeStyles(theme =>
     },
     button: {
       marginLeft: theme.spacing(3),
+    },
+    toolBar: {
       [theme.breakpoints.only("xs")]: {
-        marginLeft: theme.spacing(1),
+        paddingLeft: 0,
+      },
+    },
+    menu: {
+      display: "none",
+      [theme.breakpoints.only("xs")]: {
+        display: "inline",
       },
     },
   })
