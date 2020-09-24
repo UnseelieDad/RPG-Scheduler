@@ -25,7 +25,7 @@ const AuthButton = ({ children, classes, contained }) => {
   return (
     <Button
       variant={buttonVariant}
-      color="secondary"
+      color="primary"
       size="large"
       href={process.env.GATSBY_DISCORD_LOGIN_LINK}
       className={classes}

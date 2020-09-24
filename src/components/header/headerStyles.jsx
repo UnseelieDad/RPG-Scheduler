@@ -8,23 +8,40 @@ const headerStyles = makeStyles(theme =>
         marginLeft: theme.spacing(1),
       },
     },
-    nav: {
+    topNav: {
       display: "flex",
       alignItems: "center",
+    },
+    sideNav: {
+      [theme.breakpoints.only("xs")]: {
+        display: "flex",
+        paddingTop: "25%",
+        flexDirection: "column",
+        alignItems: "center",
+        width: "35vw",
+        height: "100vh",
+      },
     },
     link: {
       marginLeft: theme.spacing(3),
       fontSize: "1.125rem",
       "&:hover": {
-        color: theme.palette.primary.light,
+        color: theme.palette.secondary.light,
       },
       [theme.breakpoints.only("xs")]: {
-        display: "none",
+        margin: 0,
+        fontSize: "1.5rem",
+      },
+    },
+    links: {
+      [theme.breakpoints.only("xs")]: {
+        display: "flex",
+        flexDirection: "column",
       },
     },
 
     activeLink: {
-      color: theme.palette.primary.light,
+      color: theme.palette.secondary.light,
     },
     button: {
       marginLeft: theme.spacing(3),
@@ -32,12 +49,6 @@ const headerStyles = makeStyles(theme =>
     toolBar: {
       [theme.breakpoints.only("xs")]: {
         paddingLeft: 0,
-      },
-    },
-    menu: {
-      display: "none",
-      [theme.breakpoints.only("xs")]: {
-        display: "inline",
       },
     },
   })

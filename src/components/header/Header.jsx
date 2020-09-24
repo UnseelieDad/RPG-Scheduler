@@ -1,10 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import {
   Toolbar,
   Typography,
   Link as StyleLink,
-  Divider,
   IconButton,
+  Drawer,
+  Hidden,
 } from "@material-ui/core"
 
 import MenuIcon from "@material-ui/icons/Menu"
@@ -16,8 +17,13 @@ import AuthButton from "../auth/AuthButton/AuthButton"
 import headerStyles from "./headerStyles"
 
 const Header = ({ page }) => {
-  const classes = headerStyles()
+  const [drawerOpen, setDrawerOpen] = useState(false)
 
+  const handleDrawerToggle = () => {
+    setDrawerOpen(!drawerOpen)
+  }
+
+  const classes = headerStyles()
   /* 
     if user on the app page,
       change navi to hello user
@@ -26,13 +32,14 @@ const Header = ({ page }) => {
       change login to logout
 
   */
-  let nav = null
+  let links = null
   let siteHeading = null
   if (page === "landing") {
-    siteHeading = "Navi"
-    nav = (
-      <Typography color="primary" variant="button" component="div">
+    siteHeading = "Roll Call"
+    links = (
+      <Typography component="div" className={classes.links} align="center">
         <StyleLink
+          color="secondary"
           component={Link}
           to="/"
           underline="none"
@@ -42,6 +49,7 @@ const Header = ({ page }) => {
           Home
         </StyleLink>
         <StyleLink
+          color="secondary"
           component={Link}
           to="#"
           underline="none"
@@ -51,6 +59,7 @@ const Header = ({ page }) => {
           About
         </StyleLink>
         <StyleLink
+          color="secondary"
           component={Link}
           to="#"
           underline="none"
@@ -63,28 +72,37 @@ const Header = ({ page }) => {
     )
   } else if (page === "app") {
     siteHeading = "Hello User!"
-    nav = null
-    // <Button color="primary" size="large" className={classes.button}>
-    //   CREATE GAME
-    // </Button>
+    links = null
   }
 
   return (
     <header>
       <Toolbar className={classes.toolBar}>
-        <IconButton className={classes.menu}>
-          <MenuIcon />
-        </IconButton>
+        <Hidden implementation="css" smUp>
+          <IconButton className={classes.menu} onClick={handleDrawerToggle}>
+            <MenuIcon />
+          </IconButton>
+        </Hidden>
         <Typography variant="h5" className={classes.title}>
           {siteHeading}
         </Typography>
-        <nav className={classes.nav}>
-          {nav}
+        <nav className={classes.topNav}>
+          <Hidden implementation="css" only="xs">
+            {links}
+          </Hidden>
           {/* TODO: If user is logged  in change text to log out */}
           <AuthButton classes={classes.button}>LOGIN</AuthButton>
         </nav>
       </Toolbar>
-      <Divider />
+      <Hidden implementation="css" smUp>
+        <Drawer
+          open={drawerOpen}
+          className={classes.drawer}
+          onClose={handleDrawerToggle}
+        >
+          <nav className={classes.sideNav}>{links}</nav>
+        </Drawer>
+      </Hidden>
     </header>
   )
 }
