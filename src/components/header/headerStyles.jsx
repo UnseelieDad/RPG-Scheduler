@@ -45,6 +45,7 @@ const headerStyles = makeStyles(theme =>
     },
     button: {
       marginLeft: theme.spacing(3),
+      fontSize: "1.1rem",
     },
     toolBar: {
       [theme.breakpoints.only("xs")]: {

@@ -1,5 +1,5 @@
 import React from "react"
-import { Divider, Container, Typography, Link } from "@material-ui/core"
+import { Typography, Link } from "@material-ui/core"
 import { GitHub, LinkedIn, Email } from "@material-ui/icons"
 import footerStyles from "./footerStyles"
 
@@ -8,8 +8,6 @@ const Footer = () => {
 
   return (
     <footer>
-      <Divider />
-
       <Typography className={classes.links}>
         <Link
           rel="noopener"
