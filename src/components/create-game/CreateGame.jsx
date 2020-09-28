@@ -16,6 +16,8 @@ import { TextField, CheckboxWithLabel } from "formik-material-ui"
 import createGameStyles from "./createGameStyles"
 
 const CreateGame = props => {
+  // TODO: Validation, Submitting Data, Refactoring, Error Messages
+
   const recurringTypes = [
     {
       value: "Week",
@@ -37,8 +39,6 @@ const CreateGame = props => {
       <Typography variant="h4" className={classes.title}>
         Track a new game:
       </Typography>
-      {/*Hold the form in a card?*/}
-
       <Formik
         initialValues={{
           title: "",
