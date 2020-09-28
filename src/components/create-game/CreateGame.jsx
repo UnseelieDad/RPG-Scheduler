@@ -1,40 +1,21 @@
-import React, { useState } from "react"
+import React from "react"
 
 import { Link } from "gatsby"
 
 import {
   Container,
   Typography,
-  TextField,
   Button,
   Card,
-  FormControlLabel,
-  Checkbox,
-  FormControl,
-  RadioGroup,
-  Radio,
   MenuItem,
+  CardContent,
 } from "@material-ui/core"
-import { useFormik } from "formik"
+import { Formik, Form, Field } from "formik"
+import { TextField, CheckboxWithLabel } from "formik-material-ui"
 
 import createGameStyles from "./createGameStyles"
 
 const CreateGame = props => {
-  const [recurring, setRecurring] = useState(false)
-  const [recurringType, setRecurringType] = useState("Week")
-
-  const handleSubmit = () => {
-    console.log("Submit")
-  }
-
-  const handleRecurringCheck = () => {
-    recurring ? setRecurring(false) : setRecurring(true)
-  }
-
-  const handleRecurringTypeChange = event => {
-    setRecurringType(event.target.value)
-  }
-
   const recurringTypes = [
     {
       value: "Week",
@@ -57,72 +38,101 @@ const CreateGame = props => {
         Track a new game:
       </Typography>
       {/*Hold the form in a card?*/}
-      <form className={classes.form} onSubmit={handleSubmit}>
-        <TextField
-          className={classes.textField}
-          required
-          id="title-input"
-          label="Title"
-          defaultValue="Title"
-        />
-        <TextField
-          className={classes.textField}
-          required
-          id="date-input"
-          label="Date and Time"
-          type="datetime-local"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <FormControlLabel
-          control={
-            <Checkbox checked={recurring} onChange={handleRecurringCheck} />
-          }
-          label="Recurring"
-          className={classes.check}
-        />
-        {recurring ? (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <TextField
+
+      <Formik
+        initialValues={{
+          title: "",
+          dateTime: "",
+          recurring: false,
+          recurringAmount: 0,
+          recurringType: "",
+        }}
+        onSubmit={values => {
+          alert(JSON.stringify(values, null, 2))
+        }}
+      >
+        {({ values }) => (
+          <Form className={classes.form}>
+            <Field
+              component={TextField}
+              name="title"
+              type="input"
+              label="Title"
               required
+              id="title-input"
               variant="outlined"
-              id="recurring-amount"
-              label="Amount"
-              aria-label="recurring-amount"
-              defaultValue={0}
+              className={classes.textField}
             />
-            <TextField
+            <Field
+              component={TextField}
+              name="dateTime"
+              type="datetime-local"
+              label="Date and Time"
               required
-              select
+              id="date-time"
               variant="outlined"
-              id="recurring-type"
-              label="Type"
-              aria-label="recurring-type"
-              value={recurringType}
-              onChange={handleRecurringTypeChange}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              className={classes.textField}
+            />
+            <Field
+              component={CheckboxWithLabel}
+              type="checkbox"
+              name="recurring"
+              id="recurring-checkbox"
+              // Label is the form control label so classes need to go to it for styling to work
+              Label={{
+                label: "Recurring",
+                className: classes.check,
+              }}
+            />
+            {values.recurring && (
+              <Card variant="outlined" className={classes.recurringCard}>
+                <CardContent className={classes.recurringContent}>
+                  <Field
+                    component={TextField}
+                    required
+                    name="recurringAmount"
+                    id="recurring-amount"
+                    label="Amount"
+                    type="input"
+                    variant="outlined"
+                    className={classes.recurringItem}
+                  />
+                  <Typography align="center" className={classes.recurringItem}>
+                    per
+                  </Typography>
+                  <Field
+                    component={TextField}
+                    required
+                    select
+                    variant="outlined"
+                    name="recurringType"
+                    id="recurring-type"
+                    label="Type"
+                    className={classes.recurringItem}
+                  >
+                    {recurringTypes.map(option => (
+                      <MenuItem key={option.label} value={option.value}>
+                        {option.label}
+                      </MenuItem>
+                    ))}
+                  </Field>
+                </CardContent>
+              </Card>
+            )}
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              className={classes.button}
             >
-              {recurringTypes.map(option => (
-                <MenuItem key={option.label} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField>
-          </div>
-        ) : null}
-        <Button variant="contained" color="primary" className={classes.button}>
-          SUBMIT
-        </Button>
-      </form>
-      <Card className={classes.card}>
-        <Typography>Input Link generated here</Typography>
-      </Card>
+              SUBMIT
+            </Button>
+          </Form>
+        )}
+      </Formik>
       <Button component={Link} to="/app" className={classes.cancel}>
         CANCEL
       </Button>

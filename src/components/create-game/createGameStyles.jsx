@@ -16,10 +16,10 @@ const createGameStyles = makeStyles(theme => ({
     width: "100%",
   },
   title: {
-    marginBottom: theme.spacing(3),
+    marginBottom: theme.spacing(5),
   },
   button: {
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(3),
   },
   card: {
     padding: theme.spacing(2),
@@ -30,6 +30,17 @@ const createGameStyles = makeStyles(theme => ({
   },
   check: {
     marginBottom: theme.spacing(2),
+  },
+  recurringContent: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "space-between",
+  },
+  recurringCard: {
+    marginBottom: theme.spacing(2),
+  },
+  recurringItem: {
+    margin: theme.spacing(1),
   },
 }))
 

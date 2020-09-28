@@ -23,6 +23,7 @@
     "discord.js": "^12.3.1",
     "express": "^4.17.1",
     "formik": "^2.1.5",
+    "formik-material-ui": "^3.0.0",
     "gatsby": "^2.24.41",
     "gatsby-cli": "^2.12.87",
     "gatsby-plugin-create-client-paths": "^2.3.10",
