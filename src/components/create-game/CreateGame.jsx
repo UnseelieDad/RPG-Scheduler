@@ -13,10 +13,11 @@ import {
 import { Formik, Form, Field } from "formik"
 import { TextField, CheckboxWithLabel } from "formik-material-ui"
 
+import formSchema from "./formSchema"
 import createGameStyles from "./createGameStyles"
 
 const CreateGame = props => {
-  // TODO: Validation, Submitting Data, Refactoring, Error Messages
+  // TODO: Test validation and errors, Submitting Data, Refactoring
 
   const recurringTypes = [
     {
@@ -41,40 +42,49 @@ const CreateGame = props => {
       </Typography>
       <Formik
         initialValues={{
-          title: "",
-          dateTime: "",
+          title: null,
+          dateTime: null,
           recurring: false,
-          recurringAmount: 0,
-          recurringType: "",
+          recurringAmount: null,
+          recurringType: null,
         }}
+        validationSchema={formSchema}
         onSubmit={values => {
           alert(JSON.stringify(values, null, 2))
         }}
       >
-        {({ values }) => (
+        {({ values, errors, touched }) => (
           <Form className={classes.form}>
             <Field
               component={TextField}
               name="title"
               type="input"
               label="Title"
-              required
               id="title-input"
               variant="outlined"
               className={classes.textField}
+              error={errors.title && touched.title}
+              helperText={errors.title}
+              FormHelperTextProps={{
+                className: classes.helperText,
+              }}
             />
             <Field
               component={TextField}
               name="dateTime"
               type="datetime-local"
               label="Date and Time"
-              required
               id="date-time"
               variant="outlined"
               InputLabelProps={{
                 shrink: true,
               }}
               className={classes.textField}
+              error={errors.dateTime && touched.dateTime}
+              helperText={errors.dateTime}
+              FormHelperTextProps={{
+                className: classes.helperText,
+              }}
             />
             <Field
               component={CheckboxWithLabel}
@@ -99,6 +109,11 @@ const CreateGame = props => {
                     type="input"
                     variant="outlined"
                     className={classes.recurringItem}
+                    error={errors.recurringAmount && touched.recurringAmount}
+                    helperText={errors.recurringAmount}
+                    FormHelperTextProps={{
+                      className: classes.helperText,
+                    }}
                   />
                   <Typography align="center" className={classes.recurringItem}>
                     per
@@ -112,6 +127,11 @@ const CreateGame = props => {
                     id="recurring-type"
                     label="Type"
                     className={classes.recurringItem}
+                    error={errors.recurringType && touched.recurringType}
+                    helperText={errors.recurringType}
+                    FormHelperTextProps={{
+                      className: classes.helperText,
+                    }}
                   >
                     {recurringTypes.map(option => (
                       <MenuItem key={option.label} value={option.value}>

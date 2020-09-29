@@ -12,7 +12,7 @@ const createGameStyles = makeStyles(theme => ({
     alignItems: "center",
   },
   textField: {
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(4),
     width: "100%",
   },
   title: {
@@ -40,7 +40,11 @@ const createGameStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(2),
   },
   recurringItem: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(2),
+  },
+  helperText: {
+    position: "absolute",
+    top: "55px",
   },
 }))
 
